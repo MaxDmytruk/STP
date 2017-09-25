@@ -11,20 +11,34 @@ public class MatrixDemo {
 
         System.out.print("Enter order of matrix: ");
         Scanner input = new Scanner(System.in);
-        int matrixOrder = input.nextInt();
+        int matrixOrder = getMatrixOrder();
 
         //int[][] matrix = new int[matrixOrder][matrixOrder];
         //int[][] matrix = createMonotonousMatrix(matrixOrder);
 
-        int[][] matrix = createMatrix(matrixOrder);
-        showMatrix(matrix);
+        try {
+            int[][] matrix = createMatrix(matrixOrder);
+            showMatrix(matrix);
 
-        rowsAllEven= getAllEvenRow(matrix);
-        System.out.print("Row in which all items are even: ");
-        outputResult(rowsAllEven);
-        monotonousRows = getMonotonuosRows(matrix);
-        System.out.println("Task 2: ");
-        outputResult(monotonousRows);
+            rowsAllEven = getAllEvenRow(matrix);
+            System.out.print("Row in which all items are even: ");
+            outputResult(rowsAllEven);
+            monotonousRows = getMonotonuosRows(matrix);
+            System.out.println("Task 2: ");
+            outputResult(monotonousRows);
+        }
+        catch (Exception ex){
+            System.out.println(ex.getStackTrace());
+        }
+    }
+
+    private static int getMatrixOrder(){
+        try{
+            return new Scanner(System.in).nextInt();
+        }
+        catch(Exception ex){
+            return getMatrixOrder();
+        }
     }
 
     private static void outputResult(int[] rows){

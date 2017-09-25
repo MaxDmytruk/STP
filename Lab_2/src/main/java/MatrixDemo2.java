@@ -6,9 +6,14 @@ public class MatrixDemo2 {
     public static void main(String[] args){
         final int MATRIX_ORDER = 10;
 
-        int[][] matrix = createMatrix(MATRIX_ORDER);
-        showMatrix(matrix);
-        getResult(matrix);
+        try {
+            int[][] matrix = createMatrix(MATRIX_ORDER);
+            showMatrix(matrix);
+            getResult(matrix);
+        }
+        catch(Exception ex){
+            System.out.println(ex.getStackTrace());
+        }
     }
 
     private static int[][] createMatrix(int order){
